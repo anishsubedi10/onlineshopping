@@ -12,11 +12,12 @@ import Cart from "./features/cart/cart";
 import Login from "./features/User/Login";
 import SignUp from "./features/User/Signup";
 import Items from "./Items/Items";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      scaleTime: 0,
+      staleTime: 0,
     },
   },
 });
@@ -26,6 +27,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
       <BrowserRouter>
+        <Toaster />
         <Routes>
           <Route element={<AppLayout />}>
             <Route index element={<Home />} />

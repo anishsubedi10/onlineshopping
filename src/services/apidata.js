@@ -91,3 +91,58 @@ export async function deleteFavoriteApi(id) {
 
   return data;
 }
+
+export async function createCartItem(cartItem) {
+  const { data, error } = await supabase
+    .from("cart")
+    .insert([cartItem])
+    .select();
+
+  if (error) {
+    console.error(error);
+    // throw new Error("cart could not be deleted");
+  }
+
+  return data;
+}
+
+export async function getCart() {
+  let { data, error } = await supabase.from("cart").select(`
+    *,
+    allitems!product_id(*)
+  `);
+  if (error) {
+    throw new Error("Data can't be loaded");
+  }
+
+  return data;
+}
+
+export async function deleteCartApi(id) {
+  // const { data, error } = await supabase.from("cabins").delete().eq("id", id);
+
+  const { data, error } = await supabase.from("cart").delete().eq("id", id);
+
+  if (error) {
+    console.error(error);
+    // throw new Error("favorite could not be deleted");
+  }
+
+  return data;
+}
+
+export async function updateCartItem(editedData) {
+  const { id, ...itemsToBeChanged } = editedData;
+  console.log(itemsToBeChanged);
+
+  const { data, error } = await supabase
+    .from("cart")
+    .update(itemsToBeChanged)
+    .eq("id", id)
+    .select();
+  if (error) {
+    console.error(error);
+  }
+
+  return data;
+}

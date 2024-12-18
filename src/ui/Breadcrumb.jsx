@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Breadcrumb = () => {
   const location = useLocation();
@@ -12,7 +12,7 @@ const Breadcrumb = () => {
       <ol style={{ display: "flex", listStyleType: "none", padding: 0 }}>
         {/* Home link */}
         <li>
-          <NavLink to="/">Home</NavLink>
+          <Link to="/">Home</Link>
           <span style={{ margin: "0 3px" }}> &gt; </span>
         </li>
 
@@ -25,7 +25,7 @@ const Breadcrumb = () => {
             <li key={index}>
               {index < pathSegments.length - 1 ? (
                 <>
-                  <NavLink to={path}>{segment}</NavLink>
+                  <Link to={path}>{segment}</Link>
                   <span style={{ margin: "0 3px" }}> &gt; </span>
                 </>
               ) : (

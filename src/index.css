@@ -22,7 +22,7 @@
   }
 
   .active {
-    color: green;
+    @apply border-2 border-transparent border-b-black;
   }
 
   .loading-container {

@@ -5,6 +5,8 @@ export default {
     extend: {
       screens: {
         ff: "450px",
+        ftf: "525px",
+        esf: "875px",
         ef: "1150px",
       },
     },
